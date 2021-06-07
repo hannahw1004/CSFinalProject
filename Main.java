@@ -1,32 +1,38 @@
-import java.awt.*;
-import java.awt.Graphics;
-import javax.imageio.ImageIO;
-import java.io.File;
+import java.awt.*; 
+import java.awt.Graphics; 
 import java.awt.image.BufferedImage; 
-import java.io.IOException; 
+import java.io.*;
+import javax.imageio.*; 
+import java.util.*; 
+
 public class Main {
 
-    public static void main(String args[]){
-        DrawingPanel dp = new DrawingPanel(900,650);   
-        
-        startScreen(dp); 
-        mainScreen(dp);
+    // screen images
+    public static BufferedImage startScreen;
 
-        
-    }
+    // button images for start screen
 
-    public static void startScreen(DrawingPanel dp) {
-        Graphics g = dp.getGraphics();
-        
-        BufferedImage startScreen = null;
-        BufferedImage startButtonUp = null;
-        BufferedImage levelButtonUp = null;
-        BufferedImage helpButtonUp = null;
-        
-        try{
+    public static BufferedImage startButtonUp; 
+    public static BufferedImage startButtonDown; 
+    public static BufferedImage levelButtonUp; 
+    public static BufferedImage levelButtonDown; 
+    public static BufferedImage helpButtonUp; 
+    public static BufferedImage helpButtonDown; 
+
+    // button images for main screen
+    
+    public static boolean startUpOrDown = false; 
+    public static String keyInput = ""; 
+    public static int lineNum = 200;
+
+    public static void main(String[] args) {
+        DrawingPanel dp = new DrawingPanel(900,650);
+        Graphics g = dp.getGraphics();        
+
+        try {
             startScreen = ImageIO.read(new File("BlackJackstartScreen.png"));
             g.drawImage(startScreen,0,0,900,650,null);
-            
+
             startButtonUp = ImageIO.read(new File("StartButtonUp.png"));
             g.drawImage(startButtonUp,0,0,900,650,null);
 
@@ -35,9 +41,90 @@ public class Main {
 
             helpButtonUp = ImageIO.read(new File("HelpButtonUp.png"));
             g.drawImage(helpButtonUp,0,0,900,650,null);
-        } catch (IOException e){
 
+            startButtonDown = ImageIO.read(new File("StartButtonDown.png")); 
+            
+            levelButtonDown = ImageIO.read(new File("LevelButtonDown.png")); 
+
+            helpButtonDown = ImageIO.read(new File("HelpButtonDown.png")); 
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+ 
+        mouseClickStartScreenUp(dp); 
+        mouseClickStartScreenDown(dp); 
+        
+    }
+
+    public static void mouseClickStartScreenUp(DrawingPanel dp) {
+        dp.onMouseUp((x,y) -> onMouseUp(dp,x,y));
+    }
+
+    public static void onMouseUp(DrawingPanel dp, int x, int y) {
+        System.out.println("Mouse Up: " + x + ", " + y); 
+
+        Graphics g = dp.getGraphics(); 
+
+        // for Start button
+        if (355 < x && x < 535) {
+            if (365 < y && y < 405) {
+                g.drawImage(startButtonUp,0,0,900,650,null); 
+            }
+        }
+
+        // for Level button
+        if (355 < x && x < 535) {
+            if (415 < y && y < 455) {
+                g.drawImage(levelButtonUp,0,0,900,650,null);
+            }
+        }
+
+        // for Help button
+        if (355 < x && x < 535) {
+            if (465 < y && y < 505) {
+                g.drawImage(helpButtonUp,0,0,900,650,null);
+            }
+        }                 
+        
+    }
+
+    public static void mouseClickStartScreenDown(DrawingPanel dp) {
+        dp.onMouseDown((x,y) -> onMouseDown(dp,x,y));          
+    }
+
+    public static void onMouseDown(DrawingPanel dp, int x, int y) {
+        System.out.println("Mouse Down: " + x + ", " + y);
+        Graphics g = dp.getGraphics(); 
+
+        // for Start button
+        if (355 < x && x < 535) {
+            if (365 < y && y < 405) {
+                g.drawImage(startButtonDown,0,0,900,650,null);
+                g.drawString(keyInput,100,lineNum); 
+                keyInput = ""; 
+                lineNum += 30;  
+            }
+        }
+
+        // for Level button
+        if (355 < x && x < 535) {
+            if (415 < y && y < 455) {
+                g.drawImage(levelButtonDown,0,0,900,650,null);
+                g.drawString(keyInput,100,lineNum); 
+                keyInput = ""; 
+                lineNum += 30; 
+            }
+        }
+
+        // for Help button
+        if (355 < x && x < 535) {
+            if (465 < y && y < 505) {
+                g.drawImage(helpButtonDown,0,0,900,650,null);
+                g.drawString(keyInput,100,lineNum); 
+                keyInput = ""; 
+                lineNum += 30; 
+            }
+        }        
     }
 
     public static void mainScreen(DrawingPanel dp) {
@@ -80,5 +167,4 @@ public class Main {
 
         }
     }
-    
 }
