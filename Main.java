@@ -29,6 +29,8 @@ public class Main {
         DrawingPanel dp = new DrawingPanel(900,650);
         Graphics g = dp.getGraphics();  
         PlayerDecks playerdecks = new PlayerDecks();       
+        DealerDecks dealerDecks = new DealerDecks(); 
+        Dealer dealer = new Dealer(); 
 
         try {
             startScreen = ImageIO.read(new File("BlackJackstartScreen.png"));
@@ -58,6 +60,11 @@ public class Main {
         mainScreen(dp);
         playerdecks.chooseFirstCard(dp);
         playerdecks.chooseSecondCard(dp);
+
+        dp.sleep(500); 
+        dealerDecks.chooseFirstCard(dp);
+        dealer.cardBack(dp);
+        
 
         
     }
