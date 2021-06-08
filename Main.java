@@ -28,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
         DrawingPanel dp = new DrawingPanel(900,650);
         Graphics g = dp.getGraphics();  
-        Decks decks = new Decks();       
+        PlayerDecks playerdecks = new PlayerDecks();       
 
         try {
             startScreen = ImageIO.read(new File("BlackJackstartScreen.png"));
@@ -52,11 +52,12 @@ public class Main {
             e.printStackTrace();
         }
  
-        mouseClickStartScreenUp(dp); 
-        mouseClickStartScreenDown(dp); 
+        //mouseClickStartScreenUp(dp); 
+        //mouseClickStartScreenDown(dp); 
         
-        //decks.chooseFirstCard(dp);
-        //decks.chooseSecondCard(dp);
+        mainScreen(dp);
+        playerdecks.chooseFirstCard(dp);
+        playerdecks.chooseSecondCard(dp);
 
         
     }
@@ -108,8 +109,6 @@ public class Main {
                 g.drawString(keyInput,100,lineNum); 
                 keyInput = ""; 
                 lineNum += 30;
-                
-                mainScreen(dp);
             }
         }
 
