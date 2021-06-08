@@ -6,7 +6,7 @@ import javax.imageio.*;
 import java.util.*; 
 import java.util.Random;
 
-public class PlayerDecks extends Main{
+public class PlayerDecks extends Point{
 
     private int chooseColor; 
     private int chooseNumber;
