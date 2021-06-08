@@ -264,10 +264,10 @@ public class PlayerDecks extends Point{
         } 
     }
 
-    public int Calculator(int firstVal, int secondVal){
+    public int Calculator(){
         int add = 0;
 
-        add = firstVal + secondVal;
+        add = firstCardNum + secondCardNum;
     
         return add;
     }
