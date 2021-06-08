@@ -44,9 +44,28 @@ public class Decks extends Main{
     public static BufferedImage redThirteen; 
     public static BufferedImage cardBack; 
 
-    public Decks() {
-        firstCardNum = chooseNumber();      
-        secondCardNum = chooseNumber();
+    public int chooseBlackOrRed() {
+        Random random = new Random(); 
+        chooseColor = random.nextInt(2) + 1; 
+
+        return chooseColor; 
+    }
+
+    public int chooseNumber() {
+        Random random = new Random(); 
+        chooseNumber = random.nextInt(13) + 1; 
+
+        return chooseNumber; 
+    }
+
+    
+
+    public void chooseFirstCard(DrawingPanel dp) {
+
+        Graphics g = dp.getGraphics();  
+        
+        firstCardColor = chooseBlackOrRed(); 
+        firstCardNum = chooseNumber(); 
 
         try {
             // cards for 1 
@@ -107,27 +126,6 @@ public class Decks extends Main{
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public int chooseBlackOrRed() {
-        Random random = new Random(); 
-        chooseColor = random.nextInt(2) + 1; 
-
-        return chooseColor; 
-    }
-
-    public int chooseNumber() {
-        Random random = new Random(); 
-        chooseNumber = random.nextInt(13) + 1; 
-
-        return chooseNumber; 
-    }  
-
-    public void chooseFirstCard(DrawingPanel dp) {
-
-        Graphics g = dp.getGraphics();  
-        
-        firstCardColor = chooseBlackOrRed(); 
 
         // 1 is black color 
         // 2 is red color
@@ -197,9 +195,70 @@ public class Decks extends Main{
     
     public void chooseSecondCard(DrawingPanel dp) {
 
-        Graphics g = dp.getGraphics();   
-
+        Graphics g = dp.getGraphics();  
+        
         secondCardColor = chooseBlackOrRed(); 
+        secondCardNum = chooseNumber(); 
+
+        try {
+            // cards for 1 
+            blackOne = ImageIO.read(new File("BlackOne.png"));
+            redOne = ImageIO.read(new File("RedOne.png")); 
+
+            //cards for 2
+            blackTwo = ImageIO.read(new File("BlackTwo.png")); 
+            redTwo = ImageIO.read(new File("RedTwo.png")); 
+
+            // cards for 3
+            blackThree = ImageIO.read(new File("BlackThree.png")); 
+            redThree = ImageIO.read(new File("RedThree.png")); 
+
+            // cards for 4
+            blackFour = ImageIO.read(new File("BlackFour.png")); 
+            redFour = ImageIO.read(new File("RedFour.png")); 
+
+            // cards for 5
+            blackFive = ImageIO.read(new File("BlackFive.png")); 
+            redFive = ImageIO.read(new File("RedFive.png")); 
+
+            // cards for 6
+            blackSix = ImageIO.read(new File("BlackSix.png")); 
+            redSix = ImageIO.read(new File("RedSix.png"));
+            
+            // cards for 7
+            blackSeven = ImageIO.read(new File("BlackSeven.png")); 
+            redSeven = ImageIO.read(new File("RedSeven.png"));
+            
+            // cards for 8
+            blackEight = ImageIO.read(new File("BlackEight.png")); 
+            redEight = ImageIO.read(new File("RedEight.png"));
+            
+            // cards for 9
+            blackNine = ImageIO.read(new File("BlackNine.png")); 
+            redNine = ImageIO.read(new File("RedNine.png")); 
+
+            // cards for 10
+            blackTen = ImageIO.read(new File("BlackTen.png")); 
+            redTen = ImageIO.read(new File("RedTen.png")); 
+
+            // cards for 11
+            blackEleven = ImageIO.read(new File("BlackEleven.png")); 
+            redEleven = ImageIO.read(new File("RedEleven.png")); 
+
+            // cards for 12
+            blackTwelve = ImageIO.read(new File("BlackTwelve.png")); 
+            redTwelve = ImageIO.read(new File("RedTwelve.png")); 
+
+            // cards for 13
+            blackThirteen = ImageIO.read(new File("BlackThirteen.png")); 
+            redThirteen = ImageIO.read(new File("RedThirteen.png")); 
+
+            // card for back
+            cardBack = ImageIO.read(new File("CardBack.png")); 
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // 1 is black color 
         // 2 is red color
