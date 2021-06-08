@@ -14,6 +14,7 @@ public class PlayerDecks extends Point{
     public int firstCardColor; 
     public int secondCardNum; 
     public int secondCardColor; 
+    public int add;
 
     // card images
     public static BufferedImage blackOne;
@@ -163,6 +164,7 @@ public class PlayerDecks extends Point{
             }
 
         } else if (firstCardColor == 2) {
+
             if (firstCardNum == 1) {
                 g.drawImage(redOne,-140,5,900,650,null);
             } else if (firstCardNum == 2) {
@@ -190,10 +192,7 @@ public class PlayerDecks extends Point{
             } else if (firstCardNum == 13) {
                 g.drawImage(redThirteen,-140,5,900,650,null); 
             }
-
-        }
-
-        
+        }  
     }
     
     public void chooseSecondCard(DrawingPanel dp) {
@@ -235,6 +234,7 @@ public class PlayerDecks extends Point{
             }
 
         } else if (secondCardColor == 2) {
+
             if (secondCardColor == 1) {
                 g.drawImage(redOne,-8,5,900,650,null);
             } else if (secondCardColor == 2) {
@@ -262,9 +262,12 @@ public class PlayerDecks extends Point{
             } else if (secondCardColor == 13) {
                 g.drawImage(redThirteen,-8,5,900,650,null); 
             }
+        } 
+    }
 
-        }
-
-        
+    public int PlayerCardSum(){
+        add = 0;
+        add = firstCardNum + secondCardNum;
+        return add;
     }
 }
