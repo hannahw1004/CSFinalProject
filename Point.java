@@ -1,3 +1,3 @@
-public class Point{
+public class Point extends Main{
     
 }
