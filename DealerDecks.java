@@ -11,6 +11,8 @@ public class DealerDecks extends PlayerDecks{
     private int chooseNumber;
     public int firstCardNum; 
     public int secondCardNum; 
+    public int thirdCardNum; 
+    public boolean gohit = false;
     public int addition;
 
     public DealerDecks() {
@@ -26,11 +28,22 @@ public class DealerDecks extends PlayerDecks{
         return chooseNumber; 
     }
 
-    public int PlayerSumCard() {
+    public int dealerSumCard() {
         addition = 0; 
         addition = firstCardNum + secondCardNum; 
 
+        if (gohit == true) {
+            addition += thirdCardNum; 
+            gohit = false; 
+        }
+
         return addition; 
+    }
+
+    public boolean dealerGoHit() {
+        thirdCardNum = chooseNumber(); 
+        
+        return gohit = true; 
     }
 
     public void chooseFirstCard(DrawingPanel dp) {

@@ -11,7 +11,6 @@ public class Main {
     public static BufferedImage startScreen;
 
     // button images for start screen
-
     public static BufferedImage startButtonUp; 
     public static BufferedImage startButtonDown; 
     public static BufferedImage levelButtonUp; 
@@ -20,6 +19,14 @@ public class Main {
     public static BufferedImage helpButtonDown; 
 
     // button images for main screen
+    public static BufferedImage mainScreen; 
+    public static BufferedImage hitButtonUp; 
+    public static BufferedImage stayButtonUp; 
+    public static BufferedImage betButtonUp;
+    public static BufferedImage chip10Up; 
+    public static BufferedImage chip20Up; 
+    public static BufferedImage chip50Up; 
+    public static BufferedImage chip100Up; 
     
     public static boolean startUpOrDown = false; 
     public static String keyInput = ""; 
@@ -54,16 +61,24 @@ public class Main {
             e.printStackTrace();
         }
  
-        //mouseClickStartScreenUp(dp); 
-        //mouseClickStartScreenDown(dp); 
-        
-        mainScreen(dp);
-        playerdecks.chooseFirstCard(dp);
-        playerdecks.chooseSecondCard(dp);
+        while (startUpOrDown == false)  {
+            mouseClickStartScreenUp(dp); 
+            mouseClickStartScreenDown(dp);
 
-        dp.sleep(500); 
-        dealerDecks.chooseFirstCard(dp);
-        dealer.cardBack(dp);
+            if (startUpOrDown == true) {
+                break; 
+            }
+        } 
+
+        mainScreen(dp);
+        startUpOrDown = false; 
+    
+        //playerdecks.chooseFirstCard(dp);
+        //playerdecks.chooseSecondCard(dp);
+
+        //dp.sleep(500); 
+        //dealerDecks.chooseFirstCard(dp);
+        //dealer.cardBack(dp);
         
 
         
@@ -102,7 +117,7 @@ public class Main {
     }
 
     public static void mouseClickStartScreenDown(DrawingPanel dp) {
-        dp.onMouseDown((x,y) -> onMouseDown(dp,x,y));          
+        dp.onMouseDown((x,y) -> onMouseDown(dp,x,y));  
     }
 
     public static void onMouseDown(DrawingPanel dp, int x, int y) {
@@ -116,6 +131,8 @@ public class Main {
                 g.drawString(keyInput,100,lineNum); 
                 keyInput = ""; 
                 lineNum += 30;
+
+                startUpOrDown = true; 
             }
         }
 
@@ -143,42 +160,34 @@ public class Main {
     public static void mainScreen(DrawingPanel dp) {
         Graphics g = dp.getGraphics(); 
 
-        BufferedImage mainScreen = null; 
-        BufferedImage hitButtonUp = null; 
-        BufferedImage stayButtonUp = null; 
-        BufferedImage betButtonUp = null;
-        BufferedImage chip10Up = null; 
-        BufferedImage chip20Up = null; 
-        BufferedImage chip50Up = null; 
-        BufferedImage chip100Up = null; 
-
         try {
             mainScreen = ImageIO.read(new File("BlackJackmainScreen.png"));
-            g.drawImage(mainScreen,0,0,900,650,null);
 
             hitButtonUp = ImageIO.read(new File("HitbuttonUp.png"));
-            g.drawImage(hitButtonUp,0,0,900,650,null);
 
             stayButtonUp = ImageIO.read(new File("StaybuttonUp.png"));
-            g.drawImage(stayButtonUp,0,0,900,650,null);
 
             betButtonUp = ImageIO.read(new File("BetbuttonUp.png"));
-            g.drawImage(betButtonUp,0,0,900,650,null);
 
             chip10Up = ImageIO.read(new File("Chip10Up.png"));
-            g.drawImage(chip10Up,0,0,900,650,null);
 
             chip20Up = ImageIO.read(new File("Chip20Up.png"));
-            g.drawImage(chip20Up,0,0,900,650,null);
 
             chip50Up = ImageIO.read(new File("Chip50Up.png"));
-            g.drawImage(chip50Up,0,0,900,650,null);
 
             chip100Up = ImageIO.read(new File("Chip100Up.png"));
-            g.drawImage(chip100Up,0,0,900,650,null);
         }  catch (IOException e) {
 
         }
+
+        g.drawImage(mainScreen,0,0,900,650,null);
+        g.drawImage(hitButtonUp,0,0,900,650,null);
+        g.drawImage(stayButtonUp,0,0,900,650,null);
+        g.drawImage(betButtonUp,0,0,900,650,null);
+        g.drawImage(chip10Up,0,0,900,650,null);
+        g.drawImage(chip20Up,0,0,900,650,null);
+        g.drawImage(chip50Up,0,0,900,650,null);
+        g.drawImage(chip100Up,0,0,900,650,null);
     }
     
 }
