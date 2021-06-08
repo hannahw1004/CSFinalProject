@@ -5,7 +5,7 @@ import java.io.*;
 import javax.imageio.*; 
 import java.util.*; 
 
-public class Player{
+public class Dealer{
 
     // card images
     public static BufferedImage blackOne;
@@ -34,8 +34,9 @@ public class Player{
     public static BufferedImage redTwelve; 
     public static BufferedImage blackThirteen; 
     public static BufferedImage redThirteen; 
+    public static BufferedImage cardBack; 
 
-    public Player() {
+    public Dealer() {
         try {
             // cards for 1 
             blackOne = ImageIO.read(new File("BlackOne.png"));
@@ -89,142 +90,94 @@ public class Player{
             blackThirteen = ImageIO.read(new File("BlackThirteen.png")); 
             redThirteen = ImageIO.read(new File("RedThirteen.png")); 
 
+            // card for back
+            cardBack = ImageIO.read(new File("CardBack.png")); 
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     // black cards
-    public void blackOne(DrawingPanel dp, int a) {
+    public void blackOne(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
+        g.drawImage(blackOne,-220,-200,900,650,null);
         
-        if(a == 1) {
-            g.drawImage(blackOne,-140,5,900,650,null);
-        } else if(a == 2) {
-            g.drawImage(blackOne,-8,5,900,650,null);
-        }
     } 
 
-    public void blackTwo(DrawingPanel dp, int a) {
+    public void blackTwo(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
-        
-        if(a == 1) {
-            g.drawImage(blackTwo,-140,5,900,650,null);
-        } else if(a == 2) {
-            g.drawImage(blackTwo,-8,5,900,650,null);
-        }
+        g.drawImage(blackTwo,-220,-200,900,650,null);
     } 
 
-    public void blackThree(DrawingPanel dp, int a) {
+    public void blackThree(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
+        g.drawImage(blackThree,-220,-200,900,650,null);
         
-        if(a == 1) {
-            g.drawImage(blackThree,-140,5,900,650,null);
-        } else if(a == 2) {
-            g.drawImage(blackThree,-8,5,900,650,null);
-        }
     } 
 
-    public void blackFour(DrawingPanel dp, int a) {
-        Graphics g = dp.getGraphics();
+    public void blackFour(DrawingPanel dp) {
+        Graphics g = dp.getGraphics();       
+        g.drawImage(blackFour,-220,-200,900,650,null); 
         
-        if(a == 1) {
-            g.drawImage(blackFour,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackFour,-8,5,900,650,null); 
-        }
     } 
 
-    public void blackFive(DrawingPanel dp, int a) {
-        Graphics g = dp.getGraphics();
+    public void blackFive(DrawingPanel dp) {
+        Graphics g = dp.getGraphics();        
+        g.drawImage(blackFive,-220,-200,900,650,null); 
         
-        if(a == 1) {
-            g.drawImage(blackFive,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackFive,-8,5,900,650,null); 
-        }
     } 
 
-    public void blackSix(DrawingPanel dp, int a) {
-        Graphics g = dp.getGraphics();
-        
-        if(a == 1) {
-            g.drawImage(blackSix,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackSix,-8,5,900,650,null); 
-        }
+    public void blackSix(DrawingPanel dp) {
+        Graphics g = dp.getGraphics();     
+        g.drawImage(blackSix,-220,-200,900,650,null); 
+                
     } 
 
-    public void blackSeven(DrawingPanel dp, int a) {
+    public void blackSeven(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
+        g.drawImage(blackSeven,-220,-200,900,650,null);
         
-        if(a == 1) {
-            g.drawImage(blackSeven,-140,5,900,650,null);
-        } else if(a == 2) {
-            g.drawImage(blackSeven,-8,5,900,650,null); 
-        }
     } 
 
-    public void blackEight(DrawingPanel dp, int a) {
+    public void blackEight(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
+        g.drawImage(blackEight,-220,-200,900,650,null); 
         
-        if(a == 1) {
-            g.drawImage(blackEight,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackEight,-8,5,900,650,null); 
-        }
     } 
 
-    public void blackNine(DrawingPanel dp, int a) {
+    public void blackNine(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
-        
-        if(a == 1) {
-            g.drawImage(blackNine,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackNine,-8,5,900,650,null); 
-        }
+        g.drawImage(blackNine,-220,-200,900,650,null); 
+      
     } 
 
-    public void blackTen(DrawingPanel dp, int a) {
+    public void blackTen(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
-        
-        if(a == 1) {
-            g.drawImage(blackTen,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackTen,-8,5,900,650,null); 
-        }
+        g.drawImage(blackTen,-220,-200,900,650,null); 
     } 
 
-    public void blackEleven(DrawingPanel dp, int a) {
+    public void blackEleven(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
-        
-        if(a == 1) {
-            g.drawImage(blackEleven,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackEleven,-8,5,900,650,null); 
-        }
+        g.drawImage(blackEleven,-220,-200,900,650,null); 
+    
     } 
 
-    public void blackTwelve(DrawingPanel dp, int a) {
+    public void blackTwelve(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
-        
-        if(a == 1) {
-            g.drawImage(blackTwelve,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackTwelve,-8,5,900,650,null); 
-        }
+        g.drawImage(blackTwelve,-220,-200,900,650,null);         
     } 
 
-    public void blackThirteen(DrawingPanel dp, int a) {
+    public void blackThirteen(DrawingPanel dp) {
         Graphics g = dp.getGraphics();
-        
-        if(a == 1) {
-            g.drawImage(blackThirteen,-140,5,900,650,null); 
-        } else if(a == 2) {
-            g.drawImage(blackThirteen,-8,5,900,650,null); 
-        }
+        g.drawImage(blackThirteen,-220,-200,900,650,null); 
     } 
-
+    
+    public void cardBack(DrawingPanel dp) {
+        Graphics g = dp.getGraphics(); 
+        g.drawImage(cardBack,-330,-200,900,650,null); 
+    }
+    
+    
 
 }
-
