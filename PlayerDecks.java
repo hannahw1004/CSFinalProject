@@ -10,7 +10,9 @@ public class PlayerDecks extends Point{
 
     private int chooseNumber;
     public int firstCardNum; 
-    public int secondCardNum; 
+    public int secondCardNum;
+    public boolean isHitButtonClicked = false; 
+    public int thirdCardNum; 
     public int addition;
 
     public PlayerDecks() {
@@ -30,7 +32,18 @@ public class PlayerDecks extends Point{
         addition = 0; 
         addition = firstCardNum + secondCardNum; 
 
+        if (isHitButtonClicked == true) {
+            addition += thirdCardNum; 
+            isHitButtonClicked = false; 
+        }
+
         return addition; 
+    }
+
+    public boolean hitButtonclicked() {
+        thirdCardNum = chooseNumber(); 
+        
+        return isHitButtonClicked = true; 
     }
 
     public void chooseFirstCard(DrawingPanel dp) {
@@ -102,6 +115,41 @@ public class PlayerDecks extends Point{
                 player.blackTwelve(dp, 2); 
             } else if (secondCardNum == 13) {
                 player.blackThirteen(dp, 2); 
+            }
+        
+    }
+
+    public void chooseThirdCard(DrawingPanel dp) {
+
+        Graphics g = dp.getGraphics();  
+        Player player = new Player();        
+
+            if (thirdCardNum == 1) {
+                player.blackOne(dp, 3);
+            } else if (thirdCardNum == 2) {
+                player.blackTwo(dp, 3);
+            } else if (thirdCardNum == 3) {
+                player.blackThree(dp, 3); 
+            } else if (thirdCardNum == 4) {
+                player.blackFour(dp, 3);
+            } else if (thirdCardNum == 5) {
+                player.blackFive(dp, 3);
+            } else if (thirdCardNum == 6) {
+                player.blackSix(dp, 3);
+            } else if (thirdCardNum == 7) {
+                player.blackSeven(dp, 3); 
+            } else if (thirdCardNum == 8) {
+                player.blackEight(dp, 3); 
+            } else if (thirdCardNum == 9) {
+                player.blackNine(dp, 3); 
+            } else if (thirdCardNum == 10) {
+                player.blackTen(dp, 3); 
+            } else if (thirdCardNum == 11) {
+                player.blackEleven(dp, 3); 
+            } else if (thirdCardNum == 12) {
+                player.blackTwelve(dp, 3); 
+            } else if (thirdCardNum == 13) {
+                player.blackThirteen(dp, 3); 
             }
         
     }
