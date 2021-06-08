@@ -265,7 +265,7 @@ public class PlayerDecks extends Point{
         } 
     }
 
-    public int Calculator(){
+    public int PlayerCardSum(){
         add = 0;
         add = firstCardNum + secondCardNum;
         return add;
