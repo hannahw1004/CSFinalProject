@@ -52,11 +52,12 @@ public class Main {
             e.printStackTrace();
         }
  
-        mouseClickStartScreenUp(dp); 
-        mouseClickStartScreenDown(dp); 
+        //mouseClickStartScreenUp(dp); 
+        //mouseClickStartScreenDown(dp); 
         
-        //decks.chooseFirstCard(dp);
-        //decks.chooseSecondCard(dp);
+        mainScreen(dp);
+        decks.chooseFirstCard(dp);
+        decks.chooseSecondCard(dp);
 
         
     }
@@ -108,7 +109,7 @@ public class Main {
                 g.drawString(keyInput,100,lineNum); 
                 keyInput = ""; 
                 lineNum += 30;
-                
+
                 mainScreen(dp);
             }
         }
