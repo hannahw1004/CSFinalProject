@@ -14,6 +14,7 @@ public class PlayerDecks extends Point{
     public int firstCardColor; 
     public int secondCardNum; 
     public int secondCardColor; 
+    public int add;
 
     // card images
     public static BufferedImage blackOne;
@@ -265,10 +266,8 @@ public class PlayerDecks extends Point{
     }
 
     public int Calculator(){
-        int add = 0;
-
+        add = 0;
         add = firstCardNum + secondCardNum;
-    
         return add;
     }
 }
