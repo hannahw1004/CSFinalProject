@@ -103,7 +103,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackOne,-8,5,900,650,null);
         } else if(a == 3) {
-            g.drawImage(blackOne,100,5,900,650,null);
+            g.drawImage(blackOne,120,5,900,650,null);
         }
     } 
 
@@ -115,7 +115,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackTwo,-8,5,900,650,null);
         } else if(a == 3) {
-            g.drawImage(blackTwo,100,5,900,650,null);
+            g.drawImage(blackTwo,120,5,900,650,null);
         }
     } 
 
@@ -127,7 +127,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackThree,-8,5,900,650,null);
         } else if(a == 3) {
-            g.drawImage(blackThree,100,5,900,650,null);
+            g.drawImage(blackThree,120,5,900,650,null);
         }
     } 
 
@@ -139,7 +139,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackFour,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackFour,100,5,900,650,null);
+            g.drawImage(blackFour,120,5,900,650,null);
         }
     } 
 
@@ -151,7 +151,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackFive,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackFive,100,5,900,650,null);
+            g.drawImage(blackFive,120,5,900,650,null);
         }
     } 
 
@@ -163,7 +163,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackSix,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackSix,100,5,900,650,null);
+            g.drawImage(blackSix,120,5,900,650,null);
         }
     } 
 
@@ -175,7 +175,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackSeven,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackSeven,100,5,900,650,null);
+            g.drawImage(blackSeven,120,5,900,650,null);
         }
     } 
 
@@ -187,7 +187,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackEight,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackEight,100,5,900,650,null);
+            g.drawImage(blackEight,120,5,900,650,null);
         }
     } 
 
@@ -199,7 +199,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackNine,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackNine,100,5,900,650,null);
+            g.drawImage(blackNine,120,5,900,650,null);
         }
     } 
 
@@ -211,7 +211,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackTen,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackTen,100,5,900,650,null);
+            g.drawImage(blackTen,120,5,900,650,null);
         }
     } 
 
@@ -223,7 +223,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackEleven,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackEleven,100,5,900,650,null);
+            g.drawImage(blackEleven,120,5,900,650,null);
         }
     } 
 
@@ -235,7 +235,7 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackTwelve,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackTwelve,100,5,900,650,null);
+            g.drawImage(blackTwelve,120,5,900,650,null);
         }
     } 
 
@@ -247,10 +247,12 @@ public class Player{
         } else if(a == 2) {
             g.drawImage(blackThirteen,-8,5,900,650,null); 
         } else if(a == 3) {
-            g.drawImage(blackThirteen,100,5,900,650,null);
+            g.drawImage(blackThirteen,120,5,900,650,null);
         }
     } 
 
-
 }
+
+
+
 

@@ -28,18 +28,16 @@ public class Main {
     public static BufferedImage chip50Up; 
     public static BufferedImage chip100Up; 
     
-    public static boolean startUpOrDown = false; 
+    public static int isChanged = 0; 
     public static String keyInput = ""; 
     public static int lineNum = 200;
 
     public static void main(String[] args) {
         DrawingPanel dp = new DrawingPanel(900,650);
         Graphics g = dp.getGraphics();  
-        PlayerDecks playerdecks = new PlayerDecks();       
-        DealerDecks dealerDecks = new DealerDecks(); 
-        Dealer dealer = new Dealer(); 
 
         try {
+            // start screen
             startScreen = ImageIO.read(new File("BlackJackstartScreen.png"));
             g.drawImage(startScreen,0,0,900,650,null);
 
@@ -57,110 +55,8 @@ public class Main {
             levelButtonDown = ImageIO.read(new File("LevelButtonDown.png")); 
 
             helpButtonDown = ImageIO.read(new File("HelpButtonDown.png")); 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
- 
-        while (startUpOrDown == false)  {
-            mouseClickStartScreenUp(dp); 
-            mouseClickStartScreenDown(dp);
 
-            if (startUpOrDown == true) {
-                break; 
-            }
-        } 
-
-        mainScreen(dp);
-        startUpOrDown = false; 
-    
-        //playerdecks.chooseFirstCard(dp);
-        //playerdecks.chooseSecondCard(dp);
-
-        //dp.sleep(500); 
-        //dealerDecks.chooseFirstCard(dp);
-        //dealer.cardBack(dp);
-        
-
-        
-    }
-
-    public static void mouseClickStartScreenUp(DrawingPanel dp) {
-        dp.onMouseUp((x,y) -> onMouseUp(dp,x,y));
-    }
-
-    public static void onMouseUp(DrawingPanel dp, int x, int y) {
-        System.out.println("Mouse Up: " + x + ", " + y); 
-
-        Graphics g = dp.getGraphics(); 
-
-        // for Start button
-        if (355 < x && x < 535) {
-            if (365 < y && y < 405) {
-                g.drawImage(startButtonUp,0,0,900,650,null); 
-            }
-        }
-
-        // for Level button
-        if (355 < x && x < 535) {
-            if (415 < y && y < 455) {
-                g.drawImage(levelButtonUp,0,0,900,650,null);
-            }
-        }
-
-        // for Help button
-        if (355 < x && x < 535) {
-            if (465 < y && y < 505) {
-                g.drawImage(helpButtonUp,0,0,900,650,null);
-            }
-        }                 
-        
-    }
-
-    public static void mouseClickStartScreenDown(DrawingPanel dp) {
-        dp.onMouseDown((x,y) -> onMouseDown(dp,x,y));  
-    }
-
-    public static void onMouseDown(DrawingPanel dp, int x, int y) {
-        System.out.println("Mouse Down: " + x + ", " + y);
-        Graphics g = dp.getGraphics(); 
-
-        // for Start button
-        if (355 < x && x < 535) {
-            if (365 < y && y < 405) {
-                g.drawImage(startButtonDown,0,0,900,650,null);
-                g.drawString(keyInput,100,lineNum); 
-                keyInput = ""; 
-                lineNum += 30;
-
-                startUpOrDown = true; 
-            }
-        }
-
-        // for Level button
-        if (355 < x && x < 535) {
-            if (415 < y && y < 455) {
-                g.drawImage(levelButtonDown,0,0,900,650,null);
-                g.drawString(keyInput,100,lineNum); 
-                keyInput = ""; 
-                lineNum += 30; 
-            }
-        }
-
-        // for Help button
-        if (355 < x && x < 535) {
-            if (465 < y && y < 505) {
-                g.drawImage(helpButtonDown,0,0,900,650,null);
-                g.drawString(keyInput,100,lineNum); 
-                keyInput = ""; 
-                lineNum += 30; 
-            }
-        }        
-    }
-
-    public static void mainScreen(DrawingPanel dp) {
-        Graphics g = dp.getGraphics(); 
-
-        try {
+            // main screen 
             mainScreen = ImageIO.read(new File("BlackJackmainScreen.png"));
 
             hitButtonUp = ImageIO.read(new File("HitbuttonUp.png"));
@@ -176,9 +72,86 @@ public class Main {
             chip50Up = ImageIO.read(new File("Chip50Up.png"));
 
             chip100Up = ImageIO.read(new File("Chip100Up.png"));
-        }  catch (IOException e) {
-
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    
+        mouseClickStartScreenDown(dp);
+                   
+            
+        //playerdecks.chooseFirstCard(dp);
+        //playerdecks.chooseSecondCard(dp);
+
+        //dp.sleep(500); 
+        //dealerDecks.chooseFirstCard(dp);
+        //dealer.cardBack(dp);
+        
+
+        
+    }
+
+    // don't use for now
+
+    public static void mouseClickStartScreenUp(DrawingPanel dp) {
+        dp.onMouseUp((x,y) -> onMouseUp(dp,x,y));
+    }
+
+    public static void onMouseUp(DrawingPanel dp, int x, int y) {
+        System.out.println("Mouse Up: " + x + ", " + y);    
+        
+    }
+
+    public static void mouseClickStartScreenDown(DrawingPanel dp) {
+        dp.onMouseDown((x,y) -> onMouseDown(dp,x,y));  
+    }
+
+    public static void onMouseDown(DrawingPanel dp, int x, int y) {
+        PlayerDecks playerdecks = new PlayerDecks();       
+        DealerDecks dealerDecks = new DealerDecks(); 
+        Dealer dealer = new Dealer(); 
+        System.out.println("Mouse Down: " + x + ", " + y);
+        Graphics g = dp.getGraphics(); 
+
+        // for Start button
+        if (355 < x && x < 535) {
+            if (365 < y && y < 405) { 
+                dp.clear(); 
+                mainScreen(dp);
+
+                playerdecks.chooseFirstCard(dp);
+                playerdecks.chooseSecondCard(dp);
+
+                dealerDecks.chooseFirstCard(dp);
+                dealer.cardBack(dp);
+                
+            }
+        }
+
+        // for Level button
+        if (355 < x && x < 535) {
+            if (415 < y && y < 455) {
+            }
+        }
+
+        // for Help button
+        if (355 < x && x < 535) {
+            if (465 < y && y < 505) {
+            }
+        }        
+
+        if (690 < x && x < 750) {
+            if (80 < y && y < 340) {
+                playerdecks.hitButtonclicked();
+                playerdecks.chooseThirdCard(dp); 
+
+                dealerDecks.chooseThirdCard(dp);
+            }
+        }
+    }
+
+    public static void mainScreen(DrawingPanel dp) {
+        Graphics g = dp.getGraphics(); 
+        isChanged = 1; 
 
         g.drawImage(mainScreen,0,0,900,650,null);
         g.drawImage(hitButtonUp,0,0,900,650,null);
@@ -188,9 +161,9 @@ public class Main {
         g.drawImage(chip20Up,0,0,900,650,null);
         g.drawImage(chip50Up,0,0,900,650,null);
         g.drawImage(chip100Up,0,0,900,650,null);
+
     }
     
 }
-
 
 
