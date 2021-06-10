@@ -143,12 +143,23 @@ public class Main {
         if (690 < x && x < 750) {
 
             if (80 < y && y < 340) {
+                point.comparePlayerAndDealer(dp);
+
                 playerdecks.hitButtonclicked();
                 playerdecks.chooseThirdCard(dp); 
 
                 dealerDecks.chooseThirdCard(dp);
 
-                point.comparePlayerAndDealer(dp);
+               /*  dp.clear(); 
+                mainScreen(dp);
+
+                playerdecks.chooseFirstCard(dp);
+                playerdecks.chooseSecondCard(dp);
+
+                dealerDecks.chooseFirstCard(dp);
+                dealer.cardBack(dp);
+
+                point.comparePlayerAndDealer(dp); */
             }
         }
    
