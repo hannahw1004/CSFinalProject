@@ -39,16 +39,12 @@ public class Main {
         try {
             // start screen
             startScreen = ImageIO.read(new File("BlackJackstartScreen.png"));
-            g.drawImage(startScreen,0,0,900,650,null);
 
             startButtonUp = ImageIO.read(new File("StartButtonUp.png"));
-            g.drawImage(startButtonUp,0,0,900,650,null);
 
             levelButtonUp = ImageIO.read(new File("LevelButtonUp.png"));
-            g.drawImage(levelButtonUp,0,0,900,650,null);
 
             helpButtonUp = ImageIO.read(new File("HelpButtonUp.png"));
-            g.drawImage(helpButtonUp,0,0,900,650,null);
 
             startButtonDown = ImageIO.read(new File("StartButtonDown.png")); 
             
@@ -75,19 +71,21 @@ public class Main {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        g.drawImage(startScreen,0,0,900,650,null);
+        g.drawImage(startButtonUp,0,0,900,650,null);
+        g.drawImage(levelButtonUp,0,0,900,650,null);
+        g.drawImage(helpButtonUp,0,0,900,650,null);        
     
         mouseClickStartScreenDown(dp);
-                   
-            
+                               
         //playerdecks.chooseFirstCard(dp);
         //playerdecks.chooseSecondCard(dp);
 
         //dp.sleep(500); 
         //dealerDecks.chooseFirstCard(dp);
         //dealer.cardBack(dp);
-        
-
-        
+                
     }
 
     // don't use for now
@@ -109,6 +107,8 @@ public class Main {
         PlayerDecks playerdecks = new PlayerDecks();       
         DealerDecks dealerDecks = new DealerDecks(); 
         Dealer dealer = new Dealer(); 
+        Point point = new Point(); 
+
         System.out.println("Mouse Down: " + x + ", " + y);
         Graphics g = dp.getGraphics(); 
 
@@ -139,14 +139,60 @@ public class Main {
             }
         }        
 
+        // for Hit button
         if (690 < x && x < 750) {
+
             if (80 < y && y < 340) {
                 playerdecks.hitButtonclicked();
                 playerdecks.chooseThirdCard(dp); 
 
                 dealerDecks.chooseThirdCard(dp);
+
+                point.comparePlayerAndDealer(dp);
             }
         }
+   
+        // for Stay button
+        if (690 < x && x < 750) {
+            if (365 < y && y < 425) {
+                point.comparePlayerAndDealer(dp);
+            }
+        }     
+
+        // for Bet button
+        if (690 < x && x < 750) {
+            if (540 < y && y < 595) {
+            }
+        }     
+
+        // for 10chip button
+        if (280 < x && x < 330) {
+            if (545 < y && y < 595) {
+                point.is10ChipClicked();
+            }
+        }  
+        
+        // for 20Chip button
+        if (380 < x && x < 430) {
+            if (540 < y && y < 595) {
+                point.is20ChipClicked();
+            }
+        }  
+
+        // for 50Chip button 
+        if (485 < x && x < 530) {
+            if (540 < y && y < 595) {
+                point.is50ChipClicked();
+            }
+        }  
+        
+        // for 100Chip button
+        if (590 < x && x < 645) {
+            if (540 < y && y < 595) {
+                point.is100ChipClicked();
+            }
+        }  
+   
     }
 
     public static void mainScreen(DrawingPanel dp) {
