@@ -24,8 +24,14 @@ public class DealerDecks extends PlayerDecks{
     public int chooseNumber() {
         Random random = new Random(); 
         dealerChooseNumber = random.nextInt(13) + 1; 
- 
-        return dealerChooseNumber; 
+
+        if (dealerChooseNumber == 1) {
+            return 11; 
+        } else if (dealerChooseNumber >= 10) {
+            return 10; 
+        } else {
+            return dealerChooseNumber; 
+        }
     }
  
     public int dealerSumCard() {
