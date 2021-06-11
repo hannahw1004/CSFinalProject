@@ -25,7 +25,13 @@ public class PlayerDecks extends Point{
         Random random = new Random(); 
         chooseNumber = random.nextInt(13) + 1; 
 
-        return chooseNumber; 
+        if (chooseNumber == 1) {
+            return 11; 
+        } else if (chooseNumber >= 10) {
+            return 10; 
+        } else {
+            return chooseNumber; 
+        }
     }
 
     public int PlayerSumCard() {
@@ -45,6 +51,7 @@ public class PlayerDecks extends Point{
         
         return isHitButtonClicked = true; 
     }
+
 
     public void chooseFirstCard(DrawingPanel dp) {
 

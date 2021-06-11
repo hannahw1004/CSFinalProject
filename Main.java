@@ -150,16 +150,7 @@ public class Main {
 
                 dealerDecks.chooseThirdCard(dp);
 
-               /*  dp.clear(); 
-                mainScreen(dp);
-
-                playerdecks.chooseFirstCard(dp);
-                playerdecks.chooseSecondCard(dp);
-
-                dealerDecks.chooseFirstCard(dp);
-                dealer.cardBack(dp);
-
-                point.comparePlayerAndDealer(dp); */
+                point.comparePlayerAndDealer(dp); 
             }
         }
    

@@ -27,16 +27,16 @@ public class Point extends Main{
         if (playerNum == 21) {
             win(dp); 
         } else if (playerNum > 21) {
-            lose(); 
+            lose(dp); 
         } else if (playerNum < 21) {
             if(playerNum > dealerNum ){
                 win(dp);
             }else if(playerNum < dealerNum){
-                lose();
+                lose(dp);
             }else if(dealerNum > 21){
                 win(dp);
             }else if(playerNum == dealerNum){
-                draw();
+                draw(dp);
             }
         
         }
@@ -50,16 +50,37 @@ public class Point extends Main{
     }
 
     public void win(DrawingPanel dp) {
+        Graphics g = dp.getGraphics(); 
+        Font pointPlayerAndDealer = new Font("SansSerif", Font.PLAIN, 64); 
+        g.setColor(Color.CYAN);
+        g.setFont(pointPlayerAndDealer);
+
+        g.drawString("You win", 350, 328); 
+
         playerPoint += betAmount;
     }
 
-    public void draw() {
+    public void draw(DrawingPanel dp) {
+        Graphics g = dp.getGraphics(); 
+        Font pointPlayerAndDealer = new Font("SansSerif", Font.PLAIN, 64); 
+        g.setColor(Color.CYAN);
+        g.setFont(pointPlayerAndDealer);
+
+        g.drawString("You draw", 350, 328); 
+
         playerPoint += (betAmount/2);
         dealerPoint += (betAmount/2);
 
     }
 
-    public void lose() {
+    public void lose(DrawingPanel dp) {
+        Graphics g = dp.getGraphics(); 
+        Font pointPlayerAndDealer = new Font("SansSerif", Font.PLAIN, 64); 
+        g.setColor(Color.CYAN);
+        g.setFont(pointPlayerAndDealer);
+
+        g.drawString("You lose", 350, 328); 
+
         dealerPoint += betAmount;
     }
 
