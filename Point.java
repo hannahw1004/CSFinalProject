@@ -1,10 +1,9 @@
 public class Point extends Main{
+    public double playerPoint = 500; 
+    public double dealerPoint = 500; 
 
-    public int playerPoint = 500; 
-    public int dealerPoint = 500; 
-
-    public int playerNum; 
-    public int dealerNum; 
+    public double playerNum; 
+    public double dealerNum; 
 
     public int betAmount = 0;
     
@@ -15,30 +14,34 @@ public class Point extends Main{
         playerNum = playerD.PlayerSumCard(); 
         dealerNum = dealerD.dealerSumCard(); 
 
-        if (playerNum == 21) {
-            win(); 
-        } else if (playerNum > 21) {
-            lose(); 
-        } else if (playerNum < 21) {
-            if(playerNum > dealerNum ){
-                win();
-            }else if(playerNum < dealerNum){
-                lose();
-            }else if(dealerNum > 21){
-                win();
-            }else if(playerNum == dealerNum){
-                draw();
+        if(playerNum == 21){
+            if(dealerNum < 21){
+                blackJack();
+            } else if(dealerNum == 21){
+                push();
             }
-        
+        }else if(playerNum > 21){
+            lose();
+        }else if(playerNum < 21){
+            if(dealerNum > 21){
+                win();
+            }else if(dealerNum > playerNum){
+                lose();
+            }else if(dealerNum < playerNum){
+                win();
+            }else if(dealerNum == playerNum){
+                push();
+            }
         }
-
     }
-
+    public void blackJack(){
+        playerPoint = betAmount * 1.5;
+    }
     public void win() {
         playerPoint =+ betAmount;
     }
 
-    public void draw() {
+    public void push() {
         playerPoint =+ (betAmount/2);
         dealerPoint =+ (betAmount/2);
 
@@ -71,11 +74,4 @@ public class Point extends Main{
         playerPoint =- 100;
         betAmount =+ 200;
     }
-
 }
-
-}
-
-
-
-
