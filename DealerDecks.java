@@ -8,48 +8,79 @@ import java.util.Random;
  
 public class DealerDecks extends PlayerDecks{
     
-    private int dealerChooseNumber;
+    private int dealerchooseNumber;
+    public int dealerpercentChance;
     public int dealerfirstCardNum; 
     public int dealersecondCardNum; 
     public int dealerthirdCardNum; 
-    public boolean gohit = false;
+    public boolean gohit = true;
     public int dealerAddition;
-    public int dealerpercentChance;
  
     public DealerDecks() {
+        
         dealerfirstCardNum = chooseNumber();
-        dealersecondCardNum = chooseNumber(); 
+        
+        dealersecondCardNum = chooseNumber();
+ 
+        dealerthirdCardNum = chooseNumber();
+        
+ 
     }
  
     public int chooseNumber() {
         Random random = new Random(); 
-        dealerChooseNumber = random.nextInt(13) + 1; 
-
-        if (dealerChooseNumber == 1) {
-            return 11; 
-        } else if (dealerChooseNumber >= 10) {
-            return 10; 
-        } else {
-            return dealerChooseNumber; 
-        }
+        dealerchooseNumber = random.nextInt(13) + 1; 
+ 
+        return dealerchooseNumber; 
     }
  
-    public int dealerSumCard() {
-        Random random = new Random(); 
+    public int dealerSumCard() { 
         dealerAddition = 0; 
         dealerAddition = dealerfirstCardNum + dealersecondCardNum; 
+        System.out.println("Init Val of Dealer " + dealerAddition); 
+        
+        Random random = new Random(); 
  
         if (gohit == true) { 
             if(dealerAddition < 10){ 
-                dealerAddition += dealerthirdCardNum; 
-                gohit = false; 
+                if(dealerthirdCardNum == 11 || dealerthirdCardNum == 1){
+                    dealerthirdCardNum = 11;
+                    dealerAddition += dealerthirdCardNum; 
+                    System.out.println("Init Val of Dealer " + dealerAddition); 
+                    gohit = false; 
+                }else{
+                    dealerAddition += dealerthirdCardNum; 
+                    System.out.println("Init Val of Dealer " + dealerAddition); 
+                    gohit = false; 
+                }
+            }
+
+            else if(dealerAddition <= 13){ 
+                if(dealerthirdCardNum == 11 || dealerthirdCardNum == 1){
+                    dealerthirdCardNum = 1;
+                    dealerAddition += dealerthirdCardNum; 
+                    System.out.println("Init Val of Dealer " + dealerAddition); 
+                    gohit = false; 
+                }else{
+                    dealerAddition += dealerthirdCardNum; 
+                    System.out.println("Init Val of Dealer " + dealerAddition); 
+                    gohit = false; 
+                }
             }
  
             else if(dealerAddition <= 15){
                 dealerpercentChance = random.nextInt(100) + 2;
                 if(dealerpercentChance % 2 == 0){
-                    dealerAddition += dealerthirdCardNum; 
-                    gohit = false;
+                    if(dealerthirdCardNum == 11 || dealerthirdCardNum == 1){
+                        dealerthirdCardNum = 1;
+                        dealerAddition += dealerthirdCardNum; 
+                        System.out.println("Init Val of Dealer " + dealerAddition); 
+                        gohit = false;
+                    }else{
+                        dealerAddition += dealerthirdCardNum; 
+                        System.out.println("Init Val of Dealer " + dealerAddition); 
+                        gohit = false;
+                    }
                 }
                 else{
                     gohit = false;
@@ -59,8 +90,16 @@ public class DealerDecks extends PlayerDecks{
             else if(dealerAddition <= 17){
                 dealerpercentChance = random.nextInt(100) + 5;
                 if(dealerpercentChance % 5 == 0){
-                    dealerAddition += dealerthirdCardNum; 
-                    gohit = false;
+                    if(dealerthirdCardNum == 11 || dealerthirdCardNum == 1){
+                        dealerthirdCardNum = 1;
+                        dealerAddition += dealerthirdCardNum; 
+                        System.out.println("Init Val of Dealer " + dealerAddition); 
+                        gohit = false;
+                    }else{
+                        dealerAddition += dealerthirdCardNum; 
+                        System.out.println("Init Val of Dealer " + dealerAddition); 
+                        gohit = false;
+                    }
                 }else{
                     gohit = false;
                 }
@@ -69,33 +108,41 @@ public class DealerDecks extends PlayerDecks{
             else if(dealerAddition <= 19){
                 dealerpercentChance = random.nextInt(100) + 13;
                 if(dealerpercentChance % 13 == 0){
-                    dealerAddition += dealerthirdCardNum;
-                    gohit = false;
+                    if(dealerthirdCardNum == 11 || dealerthirdCardNum == 1){
+                        dealerthirdCardNum = 1;
+                        dealerAddition += dealerthirdCardNum;
+                        System.out.println("Init Val of Dealer " + dealerAddition); 
+                        gohit = false;
+                    }else{
+                        dealerAddition += dealerthirdCardNum;
+                        System.out.println("Init Val of Dealer " + dealerAddition); 
+                        gohit = false;
+                    }
                 }else{
                     gohit = false;
                 }
             }
             else{
+                System.out.println("Init Val of Dealer " + dealerAddition); 
                 gohit = false;
             }
-        }System.out.println("Value of Dealer " + dealerAddition);
+        }
  
         return dealerAddition; 
     }
-
-
+ 
     public boolean dealerGoHit() {
         dealerthirdCardNum = chooseNumber(); 
         
         return gohit = true; 
     }
-
+ 
     public void chooseFirstCard(DrawingPanel dp) {
-
+ 
         Graphics g = dp.getGraphics();  
         Dealer dealer = new Dealer(); 
         
-
+ 
         if (firstCardNum == 1) {
             dealer.blackOne(dp);
         } else if (firstCardNum == 2) {
@@ -123,5 +170,9 @@ public class DealerDecks extends PlayerDecks{
         } else if (firstCardNum == 13) {
             dealer.blackThirteen(dp); 
         }
+        
+    
     }
 }
+ 
+ 
