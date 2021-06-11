@@ -4,26 +4,15 @@ public class Point extends Main{
     public double playerPoint = 500; 
     public double dealerPoint = 500; 
 
-<<<<<<< HEAD
     public double playerNum; 
     public double dealerNum; 
-=======
-    public int playerPoint = 500; 
-    public int dealerPoint = 500; 
-
-    public int playerNum; 
-    public int dealerNum; 
-    public String playerPointStr; 
-    public String dealerPointStr; 
->>>>>>> main
 
     public int betAmount = 0;
+
+    public Font font = new Font("SansSerif", Font.PLAIN, 64); 
+    public Graphics g; 
     
     public void comparePlayerAndDealer(DrawingPanel dp) {
-        /* Graphics g = dp.getGraphics(); 
-        Font pointPlayerAndDealer = new Font("SansSerif", Font.PLAIN, 32); 
-        g.setColor(Color.YELLOW);
-        g.setFont(pointPlayerAndDealer); */
 
         PlayerDecks playerD = new PlayerDecks(); 
         DealerDecks dealerD = new DealerDecks();
@@ -31,75 +20,59 @@ public class Point extends Main{
         playerNum = playerD.PlayerSumCard(); 
         dealerNum = dealerD.dealerSumCard(); 
 
-<<<<<<< HEAD
         if(playerNum == 21){
             if(dealerNum < 21){
-                blackJack();
+                blackJack(dp);
             } else if(dealerNum == 21){
-                push();
+                push(dp);
             }
         }else if(playerNum > 21){
-            lose();
+            lose(dp);
         }else if(playerNum < 21){
             if(dealerNum > 21){
-                win();
+                win(dp);
             }else if(dealerNum > playerNum){
-                lose();
+                lose(dp);
             }else if(dealerNum < playerNum){
-                win();
+                win(dp);
             }else if(dealerNum == playerNum){
-                push();
-=======
-        if (playerNum == 21) {
-            win(dp); 
-        } else if (playerNum > 21) {
-            lose(); 
-        } else if (playerNum < 21) {
-            if(playerNum > dealerNum ){
-                win(dp);
-            }else if(playerNum < dealerNum){
-                lose();
-            }else if(dealerNum > 21){
-                win(dp);
-            }else if(playerNum == dealerNum){
-                draw();
->>>>>>> main
+                push(dp);
             }
         }
-<<<<<<< HEAD
     }
-    public void blackJack(){
+    public void blackJack(DrawingPanel dp){
+        g = dp.getGraphics(); 
+        g.setColor(Color.CYAN);
+        g.setFont(font); 
+        g.drawString("You got BlackJack", 340, 350);
+
         playerPoint = betAmount * 1.5;
     }
-    public void win() {
+    public void win(DrawingPanel dp) {
+        g = dp.getGraphics(); 
+        g.setColor(Color.CYAN);
+        g.setFont(font); 
+        g.drawString("You Win", 340, 350);
+
         playerPoint =+ betAmount;
     }
 
-    public void push() {
+    public void push(DrawingPanel dp) {
+        g = dp.getGraphics(); 
+        g.setColor(Color.CYAN);
+        g.setFont(font); 
+        g.drawString("You Draw", 340, 350);
+
         playerPoint =+ (betAmount/2);
         dealerPoint =+ (betAmount/2);
-=======
-
-        //playerPointStr = String.valueOf(playerPoint); 
-        //dealerPointStr = String.valueOf(dealerPoint); 
-
-        //g.drawString(playerPointStr, 205, 465);
-        //g.drawString(dealerPointStr, 640, 40); 
 
     }
 
-    public void win(DrawingPanel dp) {
-        playerPoint += betAmount;
-    }
-
-    public void draw() {
-        playerPoint += (betAmount/2);
-        dealerPoint += (betAmount/2);
->>>>>>> main
-
-    }
-
-    public void lose() {
+    public void lose(DrawingPanel dp) {
+        g = dp.getGraphics(); 
+        g.setColor(Color.CYAN);
+        g.setFont(font); 
+        g.drawString("You Lose", 340, 350);
         dealerPoint += betAmount;
     }
 
@@ -127,12 +100,3 @@ public class Point extends Main{
         return betAmount += 200;
     }
 }
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
->>>>>>> main
