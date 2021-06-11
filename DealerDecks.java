@@ -8,40 +8,39 @@ import java.util.Random;
 
 public class DealerDecks extends PlayerDecks{
     
-    private int chooseNumber;
-    public int firstCardNum; 
-    public int secondCardNum; 
-    public int thirdCardNum; 
+    private int dealerChooseNumber;
+    public int dealerfirstCardNum; 
+    public int dealersecondCardNum; 
+    public int dealerthirdCardNum; 
     public boolean gohit = false;
-    public int addition;
+    public int dealerAddition;
 
     public DealerDecks() {
-        firstCardNum = chooseNumber();
-        secondCardNum = chooseNumber(); 
-
+        dealerfirstCardNum = chooseNumber();
+        dealersecondCardNum = chooseNumber(); 
     }
 
     public int chooseNumber() {
         Random random = new Random(); 
-        chooseNumber = random.nextInt(13) + 1; 
+        dealerChooseNumber = random.nextInt(13) + 1; 
 
-        return chooseNumber; 
+        return dealerChooseNumber; 
     }
 
     public int dealerSumCard() {
-        addition = 0; 
-        addition = firstCardNum + secondCardNum; 
+        dealerAddition = 0; 
+        dealerAddition = dealerfirstCardNum + dealersecondCardNum; 
 
         if (gohit == true) {
-            addition += thirdCardNum; 
+            dealerAddition += dealerthirdCardNum; 
             gohit = false; 
         }
 
-        return addition; 
+        return dealerAddition; 
     }
 
     public boolean dealerGoHit() {
-        thirdCardNum = chooseNumber(); 
+        dealerthirdCardNum = chooseNumber(); 
         
         return gohit = true; 
     }
