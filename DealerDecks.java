@@ -5,7 +5,7 @@ import java.io.*;
 import javax.imageio.*; 
 import java.util.*; 
 import java.util.Random;
-
+ 
 public class DealerDecks extends PlayerDecks{
     
     private int dealerChooseNumber;
@@ -14,30 +14,69 @@ public class DealerDecks extends PlayerDecks{
     public int dealerthirdCardNum; 
     public boolean gohit = false;
     public int dealerAddition;
-
+    public int dealerpercentChance;
+ 
     public DealerDecks() {
         dealerfirstCardNum = chooseNumber();
         dealersecondCardNum = chooseNumber(); 
     }
-
+ 
     public int chooseNumber() {
         Random random = new Random(); 
         dealerChooseNumber = random.nextInt(13) + 1; 
-
+ 
         return dealerChooseNumber; 
     }
-
+ 
     public int dealerSumCard() {
+        Random random = new Random(); 
         dealerAddition = 0; 
         dealerAddition = dealerfirstCardNum + dealersecondCardNum; 
-
-        if (gohit == true) {
-            dealerAddition += dealerthirdCardNum; 
-            gohit = false; 
-        }
-
+ 
+        if (gohit == true) { 
+            if(dealerAddition < 10){ 
+                dealerAddition += dealerthirdCardNum; 
+                gohit = false; 
+            }
+ 
+            else if(dealerAddition <= 15){
+                dealerpercentChance = random.nextInt(100) + 2;
+                if(dealerpercentChance % 2 == 0){
+                    dealerAddition += dealerthirdCardNum; 
+                    gohit = false;
+                }
+                else{
+                    gohit = false;
+                } 
+            }
+ 
+            else if(dealerAddition <= 17){
+                dealerpercentChance = random.nextInt(100) + 5;
+                if(dealerpercentChance % 5 == 0){
+                    dealerAddition += dealerthirdCardNum; 
+                    gohit = false;
+                }else{
+                    gohit = false;
+                }
+            }
+ 
+            else if(dealerAddition <= 19){
+                dealerpercentChance = random.nextInt(100) + 13;
+                if(dealerpercentChance % 13 == 0){
+                    dealerAddition += dealerthirdCardNum;
+                    gohit = false;
+                }else{
+                    gohit = false;
+                }
+            }
+            else{
+                gohit = false;
+            }
+        }System.out.println("Value of Dealer " + dealerAddition);
+ 
         return dealerAddition; 
     }
+
 
     public boolean dealerGoHit() {
         dealerthirdCardNum = chooseNumber(); 
@@ -78,7 +117,5 @@ public class DealerDecks extends PlayerDecks{
         } else if (firstCardNum == 13) {
             dealer.blackThirteen(dp); 
         }
-        
-    
     }
 }
