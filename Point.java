@@ -1,7 +1,13 @@
 import java.awt.*; 
 
 public class Point extends Main{
+    public double playerPoint = 500; 
+    public double dealerPoint = 500; 
 
+<<<<<<< HEAD
+    public double playerNum; 
+    public double dealerNum; 
+=======
     public int playerPoint = 500; 
     public int dealerPoint = 500; 
 
@@ -9,6 +15,7 @@ public class Point extends Main{
     public int dealerNum; 
     public String playerPointStr; 
     public String dealerPointStr; 
+>>>>>>> main
 
     public int betAmount = 0;
     
@@ -24,6 +31,25 @@ public class Point extends Main{
         playerNum = playerD.PlayerSumCard(); 
         dealerNum = dealerD.dealerSumCard(); 
 
+<<<<<<< HEAD
+        if(playerNum == 21){
+            if(dealerNum < 21){
+                blackJack();
+            } else if(dealerNum == 21){
+                push();
+            }
+        }else if(playerNum > 21){
+            lose();
+        }else if(playerNum < 21){
+            if(dealerNum > 21){
+                win();
+            }else if(dealerNum > playerNum){
+                lose();
+            }else if(dealerNum < playerNum){
+                win();
+            }else if(dealerNum == playerNum){
+                push();
+=======
         if (playerNum == 21) {
             win(dp); 
         } else if (playerNum > 21) {
@@ -37,9 +63,22 @@ public class Point extends Main{
                 win(dp);
             }else if(playerNum == dealerNum){
                 draw();
+>>>>>>> main
             }
-        
         }
+<<<<<<< HEAD
+    }
+    public void blackJack(){
+        playerPoint = betAmount * 1.5;
+    }
+    public void win() {
+        playerPoint =+ betAmount;
+    }
+
+    public void push() {
+        playerPoint =+ (betAmount/2);
+        dealerPoint =+ (betAmount/2);
+=======
 
         //playerPointStr = String.valueOf(playerPoint); 
         //dealerPointStr = String.valueOf(dealerPoint); 
@@ -56,6 +95,7 @@ public class Point extends Main{
     public void draw() {
         playerPoint += (betAmount/2);
         dealerPoint += (betAmount/2);
+>>>>>>> main
 
     }
 
@@ -86,11 +126,13 @@ public class Point extends Main{
         playerPoint -= 100;
         return betAmount += 200;
     }
-
 }
+<<<<<<< HEAD
+=======
 
 
 
 
 
 
+>>>>>>> main
